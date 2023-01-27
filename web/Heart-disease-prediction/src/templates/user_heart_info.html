@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Heart Disease Prediction System Using Neighboring Distance Based Outer-layer Detection System</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- fevicon -->
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="{% static 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' %}" media="screen">
+    <!--[if lt IE 9]>
+      <script src= "{% static 'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js' %}"></script>
+      <script src="{% static 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script><![endif]-->
+
+</head>
+
+{% include 'header.html' %}
+<body>
+
+<body class="main-layout">
+    <div class="aboutbg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="abouttitlepage">
+                        <h2>Heart Disease prediction form</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="/prediction/" method="POST" style="margin-left:50vh;" >{% csrf_token %}
+    <iframe src="https://giphy.com/embed/Td2ljtNtSmkDuUIC1H" width="700" height="400" frameBorder="0" class="sticker giphy-embed" ></iframe>
+    <div class=" mainForm form-group col-md-7">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Age</label>
+          <input class="form-control" id="exampleFormControlSelect1" type="number" required min="1" max="100" name="age" placeholder="Enter your age"/>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Sex</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="sex">
+          <option selected>Select gender</option>
+          <option value = 0>Male</option>
+          <option value = 1>Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Chest Pain</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="cp">
+          <option selected>Select chest pain type</option>
+          <option value=0>Typical Angina</option>
+          <option value=1>Atypical Angina</option>
+          <option value=2>Non-Anginal Pain</option>
+          <option value=3>Asymptomatic</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Resting Blood Pressure in mm/Hg</label>
+
+            <input class="form-control" id="exampleFormControlSelect1" type="number" min="1" max="200" name="trestbps" placeholder="Enter your Resting Blood Pressure"/>
+
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Cholestrol</label>
+          <input class="form-control" id="exampleFormControlSelect1" type="number" min="1" max="600" name="chol" placeholder="Enter your cholestrol"/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Fasting Blood Sugar </label>
+        <select class="form-control" id="exampleFormControlSelect1" name="fbs">
+          <option selected>Select Fasting Blood Sugar</option>
+          <option value = 0>False</option>
+          <option value = 1>True</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Resting ECG </label>
+        <select class="form-control" id="exampleFormControlSelect1" name="restecg">
+          <option selected>Select Resting ECG</option>
+          <option value = 0>Normal</option>
+          <option value = 1>ST-T wave abnormality</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1"style="font-weight: bold"> Maximum Heart Rate Achieved</label>
+          <input class="form-control" id="exampleFormControlSelect1" type="number" min="20" max="200" name="thalach" placeholder="Enter your Maxium Heart Rate"/>
+      </div>
+      <div class="form-group"style="font-weight: bold">
+        <label for="exampleFormControlSelect1">Exercise Induced Angina</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="exang">
+          <option selected>Select Exercise Induced Angina</option>
+          <option value = 0>No</option>
+          <option value = 1>Yes</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">ST depression induced by exercise relative to rest</label>
+           <input class="form-control" id="exampleFormControlSelect1" type="number" min="0" max="7" name="oldpeak" placeholder="Enter your ST depression"/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">The slope of the peak exercise ST segment</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="slope" placeholder="Select Resting Slope">
+          <option>Select Resting Slope</option>
+          <option value = 0>Unsloping</option>
+          <option value = 1>Flat</option>
+          <option value = 2>Down-sloping</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Vessels Colored</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="ca">
+          <option selected>Select Vessels Colored</option>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-weight: bold">Thalassemia</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="thal">
+          <option selected>Select Thalassemia</option>
+          <option value = 1>3-Normal</option>
+          <option value = 2>6-Fixed Defect</option>
+          <option value = 3>7-Reversable Defect</option>
+        </select>
+      </div>
+      <div>
+          </br>
+</div>
+      </div>
+        <div class=" col-md-6 offset-md-2">
+          <button class="submit-btn" type="submit" > <h1> Submit </h1></button>
+    </form>
+
+</div>
+    </br>
+{% include 'footer.html' %}
+</body>
+</html>
+
+

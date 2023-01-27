@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     {% load static %}
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Heart Disease Prediction System Using Neighboring Distance Based Outer-layer Detection System</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- fevicon -->
+    <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css' %}" media="screen">
+    <!--[if lt IE 9]>
+      <script src= "{% static 'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js' %}"></script>
+      <script src="{% static 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script><![endif]-->
+</head>
+<!-- body -->
+
+	{% include 'header.html' %}
+<body class="main-layout">
+<section style="margin-top:-50px;">
+</section>
+</section>
+    <section class="banner_section">
+        <div class="banner-main">
+            <img src="{% static 'images/heart-valve.jpg' %}" width="100%">
+            <div class="container">
+
+                <div class="text-bg relative">
+                    <h1>HEART CARE<br><br>Fight For Every HeartBeat</h1>
+                    <p>We are here for your HeartCare, We will predict your heart condition as early stage to avoid disastrous consequences
+
+                        <br> Because we do care for you and I blieve, Together we can impact our community</p>
+
+                    <li> <a href="{% url 'userInfo' %}">Check Patient &#10084;&#65039; Condition Now</a> </li>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Icon-box  -->
+    <div class="Heart-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <div class="for-box">
+                        <i><img src="{% static 'icon/Phone.png' %}"> </i>
+                        <h3>Mobile Optimize</h3>
+                        <p>Optimized for viewing on different platforms and devices. Looks the same on every mobile,
+                            laptops, PCs and tablets. A smooth, continous flow.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <div class="for-box">
+                        <i><img src="{% static 'icon/cost1.jpg' %}"></i>
+                        <h3>Decrease Costs</h3>
+                        <p>Examine your heart related reports by yourself. Predict the chance of having a heart disease free of cost.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <div class="for-box">
+                        <i><img src="{% static 'icon/idea1.webp' %}" alt="icon"/></i>
+                        <h3>Smart Idea</h3>
+                        <p>Great accuracy. Accurate prediction rates. Analysis and prediction based on large samples of data.</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                    <div class="for-box">
+                        <i><img src="{% static 'icon/download.png'%}" alt="icon"/></i>
+                        <h3>Healthy Society</h3>
+                        <p>Know your risk! Adoption of SHAPE Guidelines can prevent most of these tragic events. SHAPE strives for a heart attack-free future</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Download -->
+    <div id="screenshot" class="Lastestnews">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Latest News About Heart Disease</h2>
+                        <span>New research shows resilience is common in people with congenital heart defects, <br>which affects about 1 million children and 1.4 million adults in the United States.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="news-box">
+                        <figure><img src="{% static 'images/disease.png' %}" alt="img" /></figure>
+                        <h3>Less use of surgery</h3>
+                        <span> January 20</span><span>Comment</span>
+                        <p>New guidelines for the treatment of heart valve disease call for greater use of less invasive procedures and fewer surgeries, except in the most severe cases. </p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="news-box">
+                        <figure><img src="{% static 'images/flu.png' %}" alt="img" /></figure>
+                        <h3>Flu shot reduces risk of death</h3>
+                        <span> December 20</span><span>Comment</span>
+                        <p>People who have heart disease can reduce their risk of dying or having heart-related complications by getting a flu shot, according to new research that analyzed more than a dozen studies.</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="news-box">
+                        <figure><img src="{% static 'images/exe3.png' %}" alt="img" /></figure>
+                        <h3>Physical activity could reduce heart disease</h3>
+                        <span> March 20</span><span>Comment</span>
+                        <p>The most physically active American Indians had a lower risk of dying from cardiovascular disease than the least physically active, says new research that also looked at inflammation's role.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Download -->
+	{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>
+      Heart Disease Prediction System Using Neighboring Distance Based
+      Outer-layer Detection System
+    </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <!-- Tweaks for older IEs-->
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+    <style>
+      table,
+      td,
+      th {
+        border-spacing: 0;
+      }
+      th {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px;
+      }
+      td {
+        padding: 10px;
+        font-weight: normal;
+        font-size: 20px;
+      }
+      thead tr {
+        background-color: #ad2100;
+        color: black;
+        font-weight: normal;
+      }
+      table tr td {
+        color: black;
+      }
+      .userInfo {
+        margin-left: 20vh;
+        margin-top: 5vh;
+        margin-right: 50px;
+      }
+    </style>
+  </head>
+  <!-- body -->
+  {% include 'header.html' %}
+  <body class="main-layout">
+    <div class="blogbg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blogtitlepage">
+              <h2>Result Page</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".fancybox").fancybox({
+          openEffect: "none",
+          closeEffect: "none",
+        });
+
+        $(".zoom").hover(
+          function () {
+            $(this).addClass("transition");
+          },
+          function () {
+            $(this).removeClass("transition");
+          }
+        );
+      });
+    </script>
+    <article class="userInfo">
+      <h2>User Information</h2>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>SN</th>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Age</td>
+              <td>{{ object.age }}</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sex</td>
+              {% if object.sex == '0' %}
+              <td>Male</td>
+              {% else %}
+              <td>Female</td>
+              {% endif %}
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td>Chest Pain Type</td>
+              {% if object.cp == '0' %}
+              <td>Typical Angina</td>
+              {% elif object.cp == '1' %}
+              <td>Atypical Angina</td>
+              {% elif object.cp == '2' %}
+              <td>Non-Anginal Pain</td>
+              {% else %}
+              <td>Asymptomatic</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Resting Blood Pressure</td>
+              <td>{{ object.trestbps }}</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Cholestrol</td>
+              <td>{{ object.chol }}</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Fasting Blood Sugar</td>
+              {% if object.fbs == '0' %}
+              <td>False</td>
+
+              {% else %}
+              <td>True</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Resting ECG</td>
+              {% if object.restecg == '0' %}
+              <td>Normal</td>
+
+              {% else %}
+              <td>ST-T wave abnormality</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Maximum Heart Rate</td>
+              <td>{{ object.thalach }}</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Exercise Induced Angina</td>
+              {% if object.exang == '0' %}
+              <td>No</td>
+              {% else %}
+              <td>Yes</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>ST Depression</td>
+              <td>{{ object.oldpeak }}</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Select Resting Slope</td>
+              {% if object.slope == '0' %}
+              <td>Unsloping</td>
+              {% elif object.slope == '1' %}
+              <td>Flat</td>
+              {% else %}
+              <td>Down-sloping</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Vessels Colored</td>
+              <td>{{ object.ca }}</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Thal</td>
+              {% if object.thal == '1' %}
+              <td>Normal</td>
+              {% elif object.thal == '2' %}
+              <td>6-Fixed Defect</td>
+              {% else %}
+              <td>7-Reversable Defect</td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <article class="result">
+      <!--<h1>{{ obj }}</h1>-->
+      {% if obj == 'yes' %}
+      <h1
+        style="
+          color: red;
+          font-weight: 700;
+          font-size: 30px;
+          margin-left: 250px;
+        "
+      >
+        Patient suffering from heart problem!
+      </h1>
+
+      {% elif obj == 'no' %}
+      <h1
+        style="
+          color: green;
+          font-weight: 700;
+          font-size: 30px;
+          margin-left: 250px;
+        "
+      >
+         Patient not suffering from any heart problem!
+      </h1>
+
+      {% else %}
+      <h1 style="color: black; font-weight: 900">"Some problem"!</h1>
+      {% endif %}
+    </article>
+  </body>
+</html>
+{% include 'footer.html' %}
